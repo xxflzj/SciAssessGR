@@ -1,0 +1,14 @@
+{
+  "name": "0bf93a125f36fc20",
+  "main": "0bf93a125f36fc20@355.js",
+  "version": "355.0.0",
+  "homepage": "https://observablehq.com/d/0bf93a125f36fc20",
+  "author": {
+    "name": "Southlandi's Workspace",
+    "url": "https://observablehq.com/@southlandi-ws"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}

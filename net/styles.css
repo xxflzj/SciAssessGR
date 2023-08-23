@@ -1,0 +1,39 @@
+.node {
+  display: inline-block;
+  padding: 8px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+#hover-label {
+  position: absolute;
+  font-size: 16px;
+  white-space: nowrap;
+  color: transparent;
+  padding: 5px;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: 3px;
+  transition: opacity 0.2s;
+}
+
+.hover-label-visible {
+  color: #fff;
+  -webkit-text-stroke: 1px #fff;
+  opacity: 1;
+}
+
+.-swatches-d69ff41a32ffe {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 1em;
+}
+
+.-swatches-d69ff41a32ffe::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  margin-right: 0.5em;
+  background: var(--color);
+}
