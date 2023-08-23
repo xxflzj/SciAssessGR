@@ -1,7 +1,8 @@
 async function main() {
   const data = await d3.csv("net.csv", d3.autoType);
-  const width = window.innerWidth;
-  const height = window.innerHeight-40;
+  const width = window.parent.innerWidth;
+  const height = window.parent.innerHeight;
+
 
   const svg = d3.select("#chart")
     .attr("viewBox", [-width / 2, -height / 2, width, height]);
@@ -46,16 +47,17 @@ function renderGraph(svg, nodes, links, types, width, height) {
 
 function initSimulation(nodes, links, width, height) {
   return d3.forceSimulation(nodes)
-    .force("link", d3.forceLink(links).distance(120).id(d => d.id))
-    .force("charge", d3.forceManyBody().strength(-40))
+    .force("link", d3.forceLink(links).distance(100).id(d => d.id))
+    .force("charge", d3.forceManyBody().strength(-20))
     .force("x", d3.forceX().x(0))
     .force("y", d3.forceY().y(0))
-    .force("boundary", boundaryForce(-width / 2 + 20, -height / 2 + 20, width / 2 - 20, height / 2 - 20, 10)); // 添加边界斥力
+	.force("boundary", boundaryForce(-width / 2 + 40, -height / 2 + 40, width / 2 - 40, height / 2 - 40, 100)); // 添加边界斥力
+
 }
 
 function boundaryForce(x1, y1, x2, y2, sourceBoundaryMargin) {
   function force(d) {
-    let margin = isSource(d.id) ? sourceBoundaryMargin : 20; // 源节点边界间距
+    let margin = isSource(d.id) ? sourceBoundaryMargin : 40; // 源节点边界间距
     d.x = Math.max(x1 + margin, Math.min(x2 - margin, d.x));
     d.y = Math.max(y1 + margin, Math.min(y2 - margin, d.y));
   }
@@ -68,15 +70,13 @@ function boundaryForce(x1, y1, x2, y2, sourceBoundaryMargin) {
 }
 
 function renderLinks(svg, links, types) {
-  const color = d3.scaleOrdinal(types, d3.schemeCategory10);
-
   return svg.append("g")
     .attr("fill", "none")
     .attr("stroke-width", 1.5)
     .selectAll("path")
     .data(links)
     .join("path")
-    .attr("stroke", d => color(d.type))
+    .attr("stroke", d => countryColor(d.type))
     .attr("stroke-width", d => Math.sqrt(d.score));
 }
 
@@ -189,7 +189,42 @@ d3.select(this).selectAll(".hover-label").remove();
 });
 }
 
+function countryColor(type) {
+  const colors = {
+    grc: "#1f77b4",
+    usa: "#ff7f0e",
+    zaf: "#2ca02c",
+    ita: "#6b6ecf",
+    gbr: "#9467bd",
+    che: "#aec7e8",
+    fra: "#e377c2",
+    cyp: "#7f7f7f",
+    aus: "#bcbd22",
+    can: "#17becf",
+    deu: "#9edae5",
+    bel: "#98df8a",
+    aut: "#c7c7c7",
+    are: "#c49c94",
+    jpn: "#dbdb8d",
+    mlt: "#f7b6d2",
+    isr: "#393b79",
+    dnk: "#8c6d31",
+    swe: "#dd7e6b",
+    chn: "#d62728",
+    hkg: "#c7efc5",
+    sgp: "#cedb9c",
+    nld: "#9c9ede",
+    esp: "#5254a3",
+    qat: "#6baed6",
+    nzl: "#c994c7",
+    kwt: "#8c6bb1",
+    sau: "#e7cb94",
+    prt: "#8ca252",
+    bra: "#637939"
+  };
 
+  return colors[type.toLowerCase()] || "#000000";
+}
 
 function isSource(id) {
   const source = [

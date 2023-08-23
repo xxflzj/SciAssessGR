@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!-- Port Arc Diagram visualization from http://homes.cs.washington.edu/~jheer/files/zoo/ex/networks/arc.html to D3.js -->
+<meta charset="utf-8">
+<style>
+    body {
+        font-family: Helvetica;
+            background-color:#ffffd4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+    }
+
+    path {
+        fill:#993404;
+        fill-opacity: 0.2;
+    }
+
+    circle{
+        stroke-width: 1;
+    }
+</style>
+
+
+<head>
+    <title>THE FLOW OF GREEK SCIENTISTS</title>
+    <style>
+        body {
+            font-family: Helvetica;
+            text-align: center;
+            background-color: #ffffd4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        #selectSort {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color:#fee391;
+            color: #993404;
+            cursor: pointer;
+        }
+        
+        #selectSort option {
+            background-color: white;
+            color: #333;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h1>THE FLOW OF GREEK SCIENTISTS</h1>
+    <select id="selectSort">
+        <option value="Group">by Cluster</option>
+        <option value="Frequency">by Frequency</option>
+        <option value="Name">by Name</option>
+    </select>
+</body>
+
+
+<script src="miserables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script>
+
+var i,
+    width = 960,
+    height = 500,
+    transitionTime = 2500,
+    spacing = 11,
+    margin = 20,
+    nodeY = 380,
+    nodes = miserables.nodes,
+    links = miserables.links,
+    colors = d3.scale.category20(),
+    τ = 2 * Math.PI; // http://tauday.com/tau-manifesto
+
+var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+
+function mapRange(value, inMin, inMax, outMin, outMax){
+    var inVal = Math.min(Math.max(value, inMin), inMax);
+    return outMin + (outMax-outMin)*((inVal - inMin)/(inMax-inMin));
+}
+
+// Set each node's value to the sum of all incoming and outgoing link values
+var nodeValMin = 100000000,
+    nodeValMax = 0;
+for(i=0; i<nodes.length; i++){
+    nodes[i].value = 0;
+    nodes[i].displayOrder = i;
+}
+for(i=0; i<links.length; i++){
+    var link = links[i];
+        value = link.value;
+    nodes[link.source].value += link.value;
+    nodes[link.target].value += link.value;
+}
+for(i=0; i<nodes.length; i++){
+    nodeValMin = Math.min(nodeValMin, nodes[i].value);
+    nodeValMax = Math.max(nodeValMax, nodes[i].value);
+}
+
+var arcBuilder = d3.svg.arc()
+    .startAngle(-τ/4)
+    .endAngle(τ/4);
+arcBuilder.setRadii = function(d){
+        var arcHeight = 0.5 * Math.abs(d.x2-d.x1);
+        this
+            .innerRadius(arcHeight - d.thickness/2)
+            .outerRadius(arcHeight + d.thickness/2);
+    };
+function arcTranslation(d){
+    return "translate(" + (d.x1 + d.x2)/2 + "," + nodeY + ")";
+}
+function nodeDisplayX(node){
+    return node.displayOrder * spacing + margin;
+}
+
+var path;
+
+function update(){
+    // DATA JOIN
+    path = svg.selectAll("path")
+        .data(links);
+    // UPDATE
+    path.transition()
+      .duration(transitionTime)
+      .call(pathTween, null);
+    // ENTER
+    path.enter()
+        .append("path")
+        .attr("transform", function(d,i){ 
+            d.x1 = nodeDisplayX(nodes[d.target]);
+            d.x2 = nodeDisplayX(nodes[d.source]);
+            return arcTranslation(d);
+            })
+        .attr("d", function(d,i){
+            d.thickness = 1 + d.value;
+            arcBuilder.setRadii(d);
+            return arcBuilder();
+            });
+
+    // DATA JOIN
+    var circle = svg.selectAll("circle")
+        .data(nodes);
+    // UPDATE
+    circle.transition()
+        .duration(transitionTime)
+        .attr("cx", function(d,i) {return nodeDisplayX(d);});
+    // ENTER
+    circle.enter()
+        .append("circle")
+        .attr("cy", nodeY)
+        .attr("cx", function(d,i) {return nodeDisplayX(d);})
+        .attr("r", function(d,i) {return mapRange(d.value, nodeValMin, nodeValMax, 2.5, 13);})
+        .attr("fill", function(d,i) {return colors(d.group);})
+        .attr("stroke", function(d,i) {return d3.rgb(colors(d.group)).darker(1);});
+
+    function textTransform(node){
+        return ("rotate(90 " + (nodeDisplayX(node) - 5) + " " + (nodeY + 12) + ")");
+    }
+    // DATA JOIN
+    var text = svg.selectAll("text")
+        .data(nodes);
+    // UPDATE
+    text.transition()
+        .duration(transitionTime)
+        .attr("x", function(d,i) {return nodeDisplayX(d) - 5;})
+        .attr("transform", function(d,i) { return textTransform(d); });
+    // ENTER
+    text.enter()
+        .append("text")
+        .attr("y", nodeY + 12)
+        .attr("x", function(d,i) {return nodeDisplayX(d) - 5;})
+        .attr("transform", function(d,i) { return textTransform(d); })
+        .attr("font-size", "10px")
+        .text(function(d,i) {return d.nodeName;});
+}
+
+doSort(0);
+update();
+
+function pathTween(transition, dummy){
+    transition.attrTween("d", function(d){
+        var interpolateX1 = d3.interpolate(d.x1, nodeDisplayX(nodes[d.target]));
+        var interpolateX2 = d3.interpolate(d.x2, nodeDisplayX(nodes[d.source]));
+        return function(t){
+            d.x1 = interpolateX1(t);
+            d.x2 = interpolateX2(t);
+            arcBuilder.setRadii(d);
+            return arcBuilder();
+        };
+    });
+
+    transition.attrTween("transform", function(d){
+        var interpolateX1 = d3.interpolate(d.x1, nodeDisplayX(nodes[d.target]));
+        var interpolateX2 = d3.interpolate(d.x2, nodeDisplayX(nodes[d.source]));
+        return function(t){
+            d.x1 = interpolateX1(t);
+            d.x2 = interpolateX2(t);
+            return arcTranslation(d);
+        };
+    });
+}
+
+d3.select("#selectSort").on("change", function() {
+    doSort(this.selectedIndex);
+    update();
+});
+
+function doSort(sortMethod){
+    var nodeMap = [],
+        sortFunciton;
+
+    for(i=0; i<nodes.length; i++){
+        var node = $.extend({index:i}, nodes[i]); // Shallow copy
+        nodeMap.push(node);
+    }
+
+    if (sortMethod == 0){
+        // GROUP
+        sortFunction = function(a, b){
+            return b.group - a.group;
+        };
+    }
+    else if (sortMethod == 1){
+        // FREQUENCY
+        sortFunction = function(a, b){
+            return b.value - a.value;
+        };
+    }
+    else if(sortMethod == 2){
+        // ALPHABETICAL
+        sortFunction = function(a, b){
+            return a.nodeName.localeCompare(b.nodeName)
+        };
+    }
+
+    nodeMap.sort(sortFunction);
+    for(i=0; i<nodeMap.length; i++){
+        nodes[nodeMap[i].index].displayOrder = i;
+    }
+}
+
+</script>
+
+
