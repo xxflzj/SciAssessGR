@@ -1,0 +1,253 @@
+source,target,value
+"Agriculture, Fisheries & Forestry",Entomology,12
+"Agriculture, Fisheries & Forestry",Microbiology,19
+"Agriculture, Fisheries & Forestry",Horticulture,39
+"Agriculture, Fisheries & Forestry",Plant Biology & Botany,44
+"Agriculture, Fisheries & Forestry",Forestry,105
+"Agriculture, Fisheries & Forestry",Fisheries,160
+"Agriculture, Fisheries & Forestry",Veterinary Sciences,222
+"Agriculture, Fisheries & Forestry",Agronomy & Agriculture,247
+"Agriculture, Fisheries & Forestry",Dairy & Animal Science,262
+"Agriculture, Fisheries & Forestry",Food Science,465
+Biology,Forestry,11
+Biology,Ornithology,21
+Biology,Fisheries,26
+Biology,Zoology,48
+Biology,Evolutionary Biology,117
+Biology,Ecology,179
+Biology,Entomology,215
+Biology,Marine Biology & Hydrobiology,305
+Biology,Plant Biology & Botany,582
+Biomedical Research,Tropical Medicine,11
+Biomedical Research,Plant Biology & Botany,21
+Biomedical Research,Neurology & Neurosurgery,22
+Biomedical Research,Immunology,28
+Biomedical Research,Anatomy & Morphology,31
+Biomedical Research,Biotechnology,31
+Biomedical Research,Oncology & Carcinogenesis,34
+Biomedical Research,Bioinformatics,36
+Biomedical Research,Physiology,66
+Biomedical Research,Mycology & Parasitology,74
+Biomedical Research,Biophysics,102
+Biomedical Research,Toxicology,130
+Biomedical Research,Genetics & Heredity,190
+Biomedical Research,Virology,217
+Biomedical Research,Nutrition & Dietetics,251
+Biomedical Research,Biochemistry & Molecular Biology,640
+Biomedical Research,Developmental Biology,814
+Biomedical Research,Microbiology,1065
+Built Environment & Design,Architecture,12
+Built Environment & Design,Design Practice & Management,42
+Built Environment & Design,Urban & Regional Planning,94
+Built Environment & Design,Building & Construction,285
+Chemistry,Biochemistry & Molecular Biology,12
+Chemistry,Food Science,13
+Chemistry,Materials,14
+Chemistry,Biotechnology,15
+Chemistry,Chemical Engineering,15
+Chemistry,Nanoscience & Nanotechnology,16
+Chemistry,Pharmacology & Pharmacy,17
+Chemistry,Biophysics,18
+Chemistry,Chemical Physics,43
+Chemistry,General Chemistry,63
+Chemistry,Physical Chemistry,236
+Chemistry,Medicinal & Biomolecular Chemistry,336
+Chemistry,Inorganic & Nuclear Chemistry,373
+Chemistry,Organic Chemistry,436
+Chemistry,Polymers,466
+Chemistry,Analytical Chemistry,520
+Clinical Medicine,Developmental & Child Psychology,12
+Clinical Medicine,Experimental Psychology,16
+Clinical Medicine,Physiology,16
+Clinical Medicine,Statistics & Probability,16
+Clinical Medicine,Bioinformatics,17
+Clinical Medicine,Food Science,18
+Clinical Medicine,Virology,20
+Clinical Medicine,Anatomy & Morphology,21
+Clinical Medicine,Rehabilitation,24
+Clinical Medicine,Medical Informatics,28
+Clinical Medicine,Medicinal & Biomolecular Chemistry,31
+Clinical Medicine,Environmental & Occupational Health,32
+Clinical Medicine,Epidemiology,34
+Clinical Medicine,Health Policy & Services,36
+Clinical Medicine,Biomedical Engineering,41
+Clinical Medicine,Toxicology,43
+Clinical Medicine,Nursing,44
+Clinical Medicine,Public Health,44
+Clinical Medicine,Legal & Forensic Medicine,49
+Clinical Medicine,Tropical Medicine,51
+Clinical Medicine,Geriatrics,55
+Clinical Medicine,Developmental Biology,63
+Clinical Medicine,Genetics & Heredity,77
+Clinical Medicine,Nutrition & Dietetics,88
+Clinical Medicine,Biochemistry & Molecular Biology,105
+Clinical Medicine,General Clinical Medicine,136
+Clinical Medicine,Allergy,138
+Clinical Medicine,Microbiology,167
+Clinical Medicine,Pathology,190
+Clinical Medicine,Anesthesiology,209
+Clinical Medicine,Emergency & Critical Care Medicine,274
+Clinical Medicine,Arthritis & Rheumatology,317
+Clinical Medicine,Otorhinolaryngology,330
+Clinical Medicine,Pediatrics,331
+Clinical Medicine,Dermatology & Venereal Diseases,354
+Clinical Medicine,Sport Sciences,417
+Clinical Medicine,Psychiatry,524
+Clinical Medicine,Pharmacology & Pharmacy,575
+Clinical Medicine,General & Internal Medicine,600
+Clinical Medicine,Ophthalmology & Optometry,606
+Clinical Medicine,Dentistry,700
+Clinical Medicine,Urology & Nephrology,769
+Clinical Medicine,Respiratory System,788
+Clinical Medicine,Orthopedics,803
+Clinical Medicine,Gastroenterology & Hepatology,908
+Clinical Medicine,Endocrinology & Metabolism,918
+Clinical Medicine,Nuclear Medicine & Medical Imaging,919
+Clinical Medicine,Obstetrics & Reproductive Medicine,933
+Clinical Medicine,Immunology,1163
+Clinical Medicine,Surgery,1265
+Clinical Medicine,Neurology & Neurosurgery,1672
+Clinical Medicine,Cardiovascular System & Hematology,2437
+Clinical Medicine,Oncology & Carcinogenesis,2544
+Communication & Textual Studies,Literary Studies,36
+Communication & Textual Studies,Communication & Media Studies,61
+Communication & Textual Studies,Languages & Linguistics,107
+Earth & Environmental Sciences,Energy,15
+Earth & Environmental Sciences,Marine Biology & Hydrobiology,17
+Earth & Environmental Sciences,Geological & Geomatics Engineering,19
+Earth & Environmental Sciences,Environmental Engineering,28
+Earth & Environmental Sciences,Geology,47
+Earth & Environmental Sciences,Paleontology,84
+Earth & Environmental Sciences,Oceanography,136
+Earth & Environmental Sciences,Geochemistry & Geophysics,436
+Earth & Environmental Sciences,Meteorology & Atmospheric Sciences,519
+Earth & Environmental Sciences,Environmental Sciences,627
+Economics & Business,Development Studies,12
+Economics & Business,Operations Research,12
+Economics & Business,Industrial Relations,20
+Economics & Business,Econometrics,21
+Economics & Business,Economic Theory,25
+Economics & Business,Accounting,51
+Economics & Business,Agricultural Economics & Policy,52
+Economics & Business,"Sport, Leisure & Tourism",112
+Economics & Business,Marketing,126
+Economics & Business,Finance,254
+Economics & Business,Logistics & Transportation,303
+Economics & Business,Business & Management,379
+Economics & Business,Economics,591
+Enabling & Strategic Technologies,Chemical Physics,11
+Enabling & Strategic Technologies,Building & Construction,12
+Enabling & Strategic Technologies,Acoustics,13
+Enabling & Strategic Technologies,Polymers,13
+Enabling & Strategic Technologies,Environmental Sciences,15
+Enabling & Strategic Technologies,Chemical Engineering,17
+Enabling & Strategic Technologies,Optics,17
+Enabling & Strategic Technologies,Physical Chemistry,18
+Enabling & Strategic Technologies,Applied Physics,58
+Enabling & Strategic Technologies,Bioinformatics,77
+Enabling & Strategic Technologies,"Strategic, Defence & Security Studies",163
+Enabling & Strategic Technologies,Nanoscience & Nanotechnology,173
+Enabling & Strategic Technologies,Biotechnology,233
+Enabling & Strategic Technologies,Optoelectronics & Photonics,488
+Enabling & Strategic Technologies,Materials,606
+Enabling & Strategic Technologies,Energy,1351
+Engineering,Bioinformatics,11
+Engineering,Logistics & Transportation,11
+Engineering,Fluids & Plasmas,12
+Engineering,Artificial Intelligence & Image Processing,14
+Engineering,Acoustics,16
+Engineering,Environmental Sciences,24
+Engineering,Materials,25
+Engineering,Applied Mathematics,37
+Engineering,"Strategic, Defence & Security Studies",52
+Engineering,Energy,54
+Engineering,Mining & Metallurgy,73
+Engineering,Aerospace & Aeronautics,203
+Engineering,Operations Research,210
+Engineering,Environmental Engineering,321
+Engineering,Biomedical Engineering,389
+Engineering,Chemical Engineering,408
+Engineering,Geological & Geomatics Engineering,418
+Engineering,Mechanical Engineering & Transports,449
+Engineering,Electrical & Electronic Engineering,486
+Engineering,Civil Engineering,495
+Engineering,Industrial Engineering & Automation,648
+Historical Studies,"History of Science, Technology & Medicine",18
+Historical Studies,Anthropology,46
+Historical Studies,History,54
+Historical Studies,Classics,85
+Historical Studies,Archaeology,148
+Information & Communication Technologies,"Strategic, Defence & Security Studies",12
+Information & Communication Technologies,Acoustics,13
+Information & Communication Technologies,Geological & Geomatics Engineering,18
+Information & Communication Technologies,Business & Management,19
+Information & Communication Technologies,Energy,21
+Information & Communication Technologies,Operations Research,22
+Information & Communication Technologies,Human Factors,25
+Information & Communication Technologies,Bioinformatics,26
+Information & Communication Technologies,Education,30
+Information & Communication Technologies,Optoelectronics & Photonics,32
+Information & Communication Technologies,Industrial Engineering & Automation,61
+Information & Communication Technologies,Electrical & Electronic Engineering,65
+Information & Communication Technologies,Biomedical Engineering,67
+Information & Communication Technologies,Distributed Computing,157
+Information & Communication Technologies,Software Engineering,190
+Information & Communication Technologies,Medical Informatics,217
+Information & Communication Technologies,Computation Theory & Mathematics,238
+Information & Communication Technologies,Computer Hardware & Architecture,336
+Information & Communication Technologies,Information Systems,342
+Information & Communication Technologies,Networking & Telecommunications,2035
+Information & Communication Technologies,Artificial Intelligence & Image Processing,2937
+Mathematics & Statistics,Numerical & Computational Mathematics,126
+Mathematics & Statistics,Applied Mathematics,211
+Mathematics & Statistics,Statistics & Probability,250
+Mathematics & Statistics,General Mathematics,393
+Philosophy & Theology,Applied Ethics,20
+Philosophy & Theology,Religions & Theology,21
+Philosophy & Theology,Philosophy,55
+Physics & Astronomy,Analytical Chemistry,11
+Physics & Astronomy,Energy,12
+Physics & Astronomy,Nuclear Medicine & Medical Imaging,17
+Physics & Astronomy,Polymers,18
+Physics & Astronomy,Materials,20
+Physics & Astronomy,Networking & Telecommunications,20
+Physics & Astronomy,Optoelectronics & Photonics,46
+Physics & Astronomy,Mathematical Physics,57
+Physics & Astronomy,Optics,191
+Physics & Astronomy,Acoustics,214
+Physics & Astronomy,General Physics,270
+Physics & Astronomy,Fluids & Plasmas,327
+Physics & Astronomy,Chemical Physics,366
+Physics & Astronomy,Astronomy & Astrophysics,410
+Physics & Astronomy,Nuclear & Particle Physics,1124
+Physics & Astronomy,Applied Physics,1135
+Psychology & Cognitive Sciences,Education,13
+Psychology & Cognitive Sciences,Behavioral Science & Comparative Psychology,16
+Psychology & Cognitive Sciences,Psychoanalysis,29
+Psychology & Cognitive Sciences,Clinical Psychology,64
+Psychology & Cognitive Sciences,Human Factors,73
+Psychology & Cognitive Sciences,Social Psychology,99
+Psychology & Cognitive Sciences,Developmental & Child Psychology,113
+Psychology & Cognitive Sciences,Experimental Psychology,156
+Public Health & Health Services,Gerontology,20
+Public Health & Health Services,Epidemiology,35
+Public Health & Health Services,Substance Abuse,41
+Public Health & Health Services,Rehabilitation,70
+Public Health & Health Services,Speech-Language Pathology & Audiology,85
+Public Health & Health Services,Health Policy & Services,88
+Public Health & Health Services,Public Health,174
+Public Health & Health Services,Nursing,192
+Social Sciences,Gender Studies,11
+Social Sciences,Social Sciences Methods,15
+Social Sciences,Social Work,19
+Social Sciences,Demography,20
+Social Sciences,Sociology,28
+Social Sciences,Science Studies,35
+Social Sciences,Criminology,46
+Social Sciences,Geography,52
+Social Sciences,Information & Library Sciences,59
+Social Sciences,International Relations,63
+Social Sciences,Law,94
+Social Sciences,Political Science & Public Administration,149
+Social Sciences,Education,724
+Visual & Performing Arts,Music,16
