@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>barchart</title>
+		<script src="http://d3js.org/d3.v7.min.js"></script>
+	</head>
+	<body>
+		<a href="alphabet.html">
+		<button>alphabet</button>
+		</a>
+		<a href="ascending.html">
+		<button>ascending</button>
+		</a>
+		<a href="descending.html">
+		<button>descending</button>
+		</a>
+		<svg width="1600" height="6000" id="mainsvg" class="svgs"></svg>
+		<script>
+			const data = [{name:'Accounting',value:52},
+					{name:'Acoustics',value:266},
+					{name:'Aerospace & Aeronautics',value:219},
+					{name:'Agricultural Economics & Policy',value:57},
+					{name:'Agronomy & Agriculture',value:265},
+					{name:'Allergy',value:142},
+					{name:'Analytical Chemistry',value:564},
+					{name:'Anatomy & Morphology',value:52},
+					{name:'Anesthesiology',value:211},
+					{name:'Anthropology',value:56},
+					{name:'Applied Ethics',value:26},
+					{name:'Applied Mathematics',value:261},
+					{name:'Applied Physics',value:1218},
+					{name:'Archaeology',value:168},
+					{name:'Architecture',value:12},
+					{name:'Art Practice, History & Theory',value:7},
+					{name:'Arthritis & Rheumatology',value:320},
+					{name:'Artificial Intelligence & Image Processing',value:2985},
+					{name:'Astronomy & Astrophysics',value:413},
+					{name:'Automobile Design & Engineering',value:7},
+					{name:'Behavioral Science & Comparative Psychology',value:26},
+					{name:'Biochemistry & Molecular Biology',value:760},
+					{name:'Bioinformatics',value:177},
+					{name:'Biomedical Engineering',value:511},
+					{name:'Biophysics',value:135},
+					{name:'Biotechnology',value:309},
+					{name:'Building & Construction',value:316},
+					{name:'Business & Management',value:403},
+					{name:'Cardiovascular System & Hematology',value:2449},
+					{name:'Chemical Engineering',value:456},
+					{name:'Chemical Physics',value:435},
+					{name:'Civil Engineering',value:502},
+					{name:'Classics',value:89},
+					{name:'Clinical Psychology',value:75},
+					{name:'Communication & Media Studies',value:65},
+					{name:'Complementary & Alternative Medicine',value:14},
+					{name:'Computation Theory & Mathematics',value:243},
+					{name:'Computer Hardware & Architecture',value:337},
+					{name:'Criminology',value:52},
+					{name:'Cultural Studies',value:11},
+					{name:'Dairy & Animal Science',value:268},
+					{name:'Demography',value:23},
+					{name:'Dentistry',value:713},
+					{name:'Dermatology & Venereal Diseases',value:360},
+					{name:'Design Practice & Management',value:59},
+					{name:'Development Studies',value:16},
+					{name:'Developmental & Child Psychology',value:129},
+					{name:'Developmental Biology',value:884},
+					{name:'Distributed Computing',value:158},
+					{name:'Drama & Theater',value:5},
+					{name:'Ecology',value:192},
+					{name:'Econometrics',value:21},
+					{name:'Economic Theory',value:26},
+					{name:'Economics',value:596},
+					{name:'Education',value:785},
+					{name:'Electrical & Electronic Engineering',value:560},
+					{name:'Emergency & Critical Care Medicine',value:276},
+					{name:'Endocrinology & Metabolism',value:928},
+					{name:'Energy',value:1467},
+					{name:'Entomology',value:243},
+					{name:'Environmental & Occupational Health',value:39},
+					{name:'Environmental Engineering',value:366},
+					{name:'Environmental Sciences',value:697},
+					{name:'Epidemiology',value:73},
+					{name:'Evolutionary Biology',value:121},
+					{name:'Experimental Psychology',value:178},
+					{name:'Family Studies',value:7},
+					{name:'Finance',value:254},
+					{name:'Fisheries',value:193},
+					{name:'Fluids & Plasmas',value:354},
+					{name:'Folklore',value:2},
+					{name:'Food Science',value:513},
+					{name:'Forestry',value:124},
+					{name:'Gastroenterology & Hepatology',value:915},
+					{name:'Gender Studies',value:12},
+					{name:'General & Internal Medicine',value:611},
+					{name:'General Chemistry',value:63},
+					{name:'General Clinical Medicine',value:140},
+					{name:'General Mathematics',value:399},
+					{name:'General Physics',value:282},
+					{name:'General Psychology & Cognitive Sciences',value:7},
+					{name:'Genetics & Heredity',value:270},
+					{name:'Geochemistry & Geophysics',value:445},
+					{name:'Geography',value:63},
+					{name:'Geological & Geomatics Engineering',value:460},
+					{name:'Geology',value:47},
+					{name:'Geriatrics',value:58},
+					{name:'Gerontology',value:34},
+					{name:'Health Policy & Services',value:124},
+					{name:'History',value:59},
+					{name:'History of Science, Technology & Medicine',value:22},
+					{name:'History of Social Sciences',value:9},
+					{name:'Horticulture',value:41},
+					{name:'Human Factors',value:105},
+					{name:'Immunology',value:1194},
+					{name:'Industrial Engineering & Automation',value:722},
+					{name:'Industrial Relations',value:24},
+					{name:'Information & Library Sciences',value:73},
+					{name:'Information Systems',value:351},
+					{name:'Inorganic & Nuclear Chemistry',value:379},
+					{name:'International Relations',value:65},
+					{name:'Languages & Linguistics',value:114},
+					{name:'Law',value:96},
+					{name:'Legal & Forensic Medicine',value:53},
+					{name:'Literary Studies',value:39},
+					{name:'Logistics & Transportation',value:329},
+					{name:'Marine Biology & Hydrobiology',value:331},
+					{name:'Marketing',value:131},
+					{name:'Materials',value:671},
+					{name:'Mathematical Physics',value:64},
+					{name:'Mechanical Engineering & Transports',value:472},
+					{name:'Medical Informatics',value:262},
+					{name:'Medicinal & Biomolecular Chemistry',value:385},
+					{name:'Meteorology & Atmospheric Sciences',value:529},
+					{name:'Microbiology',value:1267},
+					{name:'Microscopy',value:10},
+					{name:'Mining & Metallurgy',value:80},
+					{name:'Music',value:19},
+					{name:'Mycology & Parasitology',value:95},
+					{name:'Nanoscience & Nanotechnology',value:209},
+					{name:'Networking & Telecommunications',value:2063},
+					{name:'Neurology & Neurosurgery',value:1707},
+					{name:'Nuclear & Particle Physics',value:1132},
+					{name:'Nuclear Medicine & Medical Imaging',value:953},
+					{name:'Numerical & Computational Mathematics',value:143},
+					{name:'Nursing',value:237},
+					{name:'Nutrition & Dietetics',value:356},
+					{name:'Obstetrics & Reproductive Medicine',value:940},
+					{name:'Oceanography',value:145},
+					{name:'Oncology & Carcinogenesis',value:2589},
+					{name:'Operations Research',value:256},
+					{name:'Ophthalmology & Optometry',value:609},
+					{name:'Optics',value:229},
+					{name:'Optoelectronics & Photonics',value:578},
+					{name:'Organic Chemistry',value:444},
+					{name:'Ornithology',value:21},
+					{name:'Orthopedics',value:810},
+					{name:'Otorhinolaryngology',value:334},
+					{name:'Paleontology',value:88},
+					{name:'Pathology',value:194},
+					{name:'Pediatrics',value:341},
+					{name:'Pharmacology & Pharmacy',value:604},
+					{name:'Philosophy',value:58},
+					{name:'Physical Chemistry',value:262},
+					{name:'Physiology',value:85},
+					{name:'Plant Biology & Botany',value:659},
+					{name:'Political Science & Public Administration',value:162},
+					{name:'Polymers',value:505},
+					{name:'Psychiatry',value:544},
+					{name:'Psychoanalysis',value:31},
+					{name:'Public Health',value:226},
+					{name:'Rehabilitation',value:104},
+					{name:'Religions & Theology',value:24},
+					{name:'Respiratory System',value:790},
+					{name:'Science Studies',value:51},
+					{name:'Social Psychology',value:105},
+					{name:'Social Sciences Methods',value:16},
+					{name:'Social Work',value:26},
+					{name:'Sociology',value:30},
+					{name:'Software Engineering',value:192},
+					{name:'Speech-Language Pathology & Audiology',value:103},
+					{name:'Sport Sciences',value:435},
+					{name:'Sport, Leisure & Tourism',value:119},
+					{name:'Statistics & Probability',value:276},
+					{name:'Strategic, Defence & Security Studies',value:259},
+					{name:'Substance Abuse',value:54},
+					{name:'Surgery',value:1269},
+					{name:'Toxicology',value:196},
+					{name:'Tropical Medicine',value:66},
+					{name:'Urban & Regional Planning',value:117},
+					{name:'Urology & Nephrology',value:773},
+					{name:'Veterinary Sciences',value:237},
+					{name:'Virology',value:240},
+					{name:'Zoology',value:51}
+			 ];
+			
+			const svg = d3.select('#mainsvg');
+			const width = +svg.attr('width');
+			const height = +svg.attr('height');
+			const margin = {top:70, right:60, bottom:60, left:450};
+			const innerWidth = width - margin.left - margin.right;
+			const innerHeight = height - margin.top - margin.bottom;
+			
+			const xScale = d3.scaleLinear()
+			.domain([0,d3.max(data, d => d.value)])
+			.range([0,innerWidth]);
+			
+			const yScale = d3.scaleBand()
+			.domain(data.map(d => d.name))
+			.range([0,innerHeight])
+			.padding(0.1);
+			
+			const cScale = d3.scaleLinear()
+			.domain([0,d3.max(data, d => d.value)])
+			.range([0,256])
+			
+			const g = svg.append('g').attr('id', 'maingroup') 
+			.attr('transform', `translate(${margin.left}, ${margin.top})`);
+			
+			const yAxis = d3.axisLeft(yScale);
+			g.append('g').call(yAxis);
+			
+			const xAxis = d3.axisBottom(xScale)
+			.tickSize(-innerHeight);
+			g.append('g').call(xAxis).attr('transform', `translate(0, ${innerHeight})`)
+			
+			data.forEach( d=>{
+				g.append('rect')
+				.attr('width', xScale(d.value))
+				.attr('height', yScale.bandwidth())
+				.attr('opacity', 0.7)
+				.attr('fill','green')
+				.attr('y',yScale(d.name));
+				
+				g.append('text')
+				.text(d.value)
+				.attr('x', xScale(d.value)+7)
+				.attr('y', yScale(d.name) + yScale.bandwidth() / 2 + 7)
+				});
+				
+			d3.selectAll('.tick text').attr('font-size', '2em');
+			
+			g.append('text').text('Field Distribution')
+			.attr('font-size', '3em')
+			.attr('transform', `translate(${innerWidth / 2},-20)`)
+			.attr('text-anchor', 'middle')
+		</script>
+	</body>
+</html>

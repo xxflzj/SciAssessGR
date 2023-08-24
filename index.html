@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Greek Scientific Brain Drain Visualization</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <style>
+            .content-frame {
+                width: 100%;
+                border: none;
+            }
+
+            /* Custom styles */
+            #sidebar {
+                background-color: #212121; /* Add your desired color */
+            }
+
+            #sidebar a {
+                transition: color 0.3s;
+            }
+
+            #sidebar a[data-target="destination"] {
+                color: #FFFFFF;
+            }
+
+            #sidebar a[data-target="acrdiagram"] {
+                color: #FFFFFF;
+            }
+
+            #sidebar a[data-target="network"] {
+                color: #FFFFFF; /* Use the current color from main.css */
+            }
+
+            #sidebar a[data-target="relation2"] {
+                color: #FFFFFF;
+            }
+
+            #sidebar a.active {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+
+        <!-- Sidebar -->
+        <section id="sidebar">
+            <div class="inner">
+                <nav>
+                    <ul>
+                        <li><a href="#" data-target="destination" class="active">Destination Map</a></li>
+                        <li><a href="#" data-target="acrdiagram">Flow</a></li>
+                        <li><a href="#" data-target="network">Research Network</a></li>
+                        <li><a href="#" data-target="field">Sub-Field</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Content -->
+            <div id="content">
+                <iframe id="destination" src="/destination/index.html" class="content-frame"></iframe>
+                <iframe id="acrdiagram" src="/arcdiagram/index.html" class="content-frame" style="display:none;"></iframe>
+                <iframe id="network" src="/network/index.html" class="content-frame" style="display:none;"></iframe>
+                <iframe id="field" src="/field/index.html" class="content-frame" style="display:none;"></iframe>
+            </div>
+
+            <!-- Other sections and content... -->
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script>
+            function updateIframeHeight() {
+                const windowHeight = window.innerHeight;
+                const iframes = document.querySelectorAll('.content-frame');
+                Array.prototype.map.call(iframes, function (iframe) {
+                    iframe.style.height = windowHeight + 'px';
+                });
+            }
+
+            window.addEventListener('resize', updateIframeHeight);
+
+    document.querySelectorAll('#sidebar a[data-target]').forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // Remove active class for the previous active link
+            const prevActiveLink = document.querySelector('#sidebar a[data-target].active');
+            prevActiveLink.classList.remove('active');
+
+            // Add active class for the current link
+            this.classList.add('active');
+            updateSidebarBgColor(event.target.dataset.target); // Update the sidebar background color
+
+            // Hide all the iframes
+            const iframes = document.querySelectorAll('.content-frame');
+            Array.prototype.map.call(iframes, function (iframe) {
+                iframe.style.display = 'none';
+            });
+
+            // Show the iframe corresponding to the clicked link
+            const targetIframe = document.getElementById(event.target.dataset.target);
+            targetIframe.style.display = 'block';
+        });
+    });
+
+    function updateSidebarBgColor(target) {
+        const sidebar = document.getElementById('sidebar');
+        switch (target) {
+            case 'destination':
+                sidebar.style.backgroundColor = '#354741';
+                break;
+            case 'acrdiagram':
+                sidebar.style.backgroundColor = '#d9b611';
+                break;
+            case 'network':
+                sidebar.style.backgroundColor = '#312450'; // Reset to default color (delete CSS property)
+                break;
+            case 'field':
+                sidebar.style.backgroundColor = '#4c8dae';
+                break;
+        }
+    }
+
+    updateIframeHeight();
+    updateSidebarBgColor('destination'); // Initialize with 'destination' background color
+        </script>
+    </body>
+</html>

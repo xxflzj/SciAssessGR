@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>barchart</title>
+        <script src="http://d3js.org/d3.v7.min.js"></script>
+        <style>
+            button {
+                margin: 5px;
+            }
+            body {
+                background-color: #96c6df;
+                text-align: center;
+                font: Helvetica;
+            }
+			#selectSort {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color:#6f9fb8;
+            color: #993404;
+            cursor: pointer;
+			}
+			#selectSort option {
+				background-color: white;
+				color: #333;
+			}
+        </style>
+    </head>
+    <body>
+	<div>
+    <h1>Sub-Field Distribution</h1>
+    <select id="selectSort">
+        <option value="alphabet" selected>alphabet</option>
+        <option value="ascending">ascending</option>
+        <option value="descending">descending</option>
+    </select>
+	</div>
+	<div>
+        <svg width="1200" height="750" id="mainsvg" class="svgs"></svg>
+        <script src="data.js"></script>
+        <script src="main.js"></script>
+	</div>
+    </body>
+</html>

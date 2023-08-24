@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientists' Mobility between Countries and Research Fields</title>
+    <style> 
+        body, html {
+          height: 100%;
+          margin: 0;
+          background-color: #edd1d8;
+        }
+
+        h1 {
+          font-weight: bold;
+          margin-top: 20px;
+          margin-bottom: 10px;
+          text-align: center;
+        }
+
+        #description {
+          margin-bottom: 10px;
+          text-align: center;
+        }
+      
+        #tooltip {
+          background:white;
+          font-size: 15px;
+          position: absolute;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          visibility: hidden;
+        }
+
+        .path {
+          stroke: white;
+          stroke-width: 0.5px;
+          fill: black;
+        }
+		
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+		
+        #legend {
+          position: absolute;
+          bottom: 8px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: center;
+          font-size: 6px;
+          opacity: 0.95;
+        }
+
+        .swatch {
+          padding: 3px 6px;
+          margin: 0 3px;
+          border-radius: 3px;
+          display: inline-block;
+          background-color: var(--color);
+        }
+
+        #chart-container {
+          position: relative;
+          width: 100%;
+          height: calc(100% - 60px);
+        }
+    </style>
+    <script src="http://d3js.org/d3.v7.min.js" charset="utf-8"></script>
+    <script src="http://d3js.org/topojson.v2.min.js"></script>
+</head>
+	<h1>Scientists' Mobility between Countries and Research Fields</h1>
+    <div id="chart-container">
+        <svg id="chart" style="display: block; position:relative; z-index: 1; width: 100%; height: 95%;"></svg>
+    </div>
+    <script src="net_script.js"></script>
+    <div id="tooltip"></div>
+    <div id="legend">
+<span class="swatch" data-color="#1f77b4">GRC</span>
+<span class="swatch" data-color="#ff7f0e">USA</span>
+<span class="swatch" data-color="#2ca02c">ZAF</span>
+<span class="swatch" data-color="#6b6ecf">ITA</span>
+<span class="swatch" data-color="#9467bd">GBR</span>
+<span class="swatch" data-color="#aec7e8">CHE</span>
+<span class="swatch" data-color="#e377c2">FRA</span>
+<span class="swatch" data-color="#7f7f7f">CYP</span>
+<span class="swatch" data-color="#bcbd22">AUS</span>
+<span class="swatch" data-color="#17becf">CAN</span>
+<span class="swatch" data-color="#9edae5">DEU</span>
+<span class="swatch" data-color="#98df8a">BEL</span>
+<span class="swatch" data-color="#c7c7c7">AUT</span>
+<span class="swatch" data-color="#c49c94">ARE</span>
+<span class="swatch" data-color="#dbdb8d">JPN</span>
+<span class="swatch" data-color="#f7b6d2">MLT</span>
+<span class="swatch" data-color="#393b79">ISR</span>
+<span class="swatch" data-color="#8c6d31">DNK</span>
+<span class="swatch" data-color="#dd7e6b">SWE</span>
+<span class="swatch" data-color="#d62728">CHN</span>
+<span class="swatch" data-color="#c7efc5">HKG</span>
+<span class="swatch" data-color="#cedb9c">SGP</span>
+<span class="swatch" data-color="#9c9ede">NLD</span>
+<span class="swatch" data-color="#5254a3">ESP</span>
+<span class="swatch" data-color="#6baed6">QAT</span>
+<span class="swatch" data-color="#c994c7">NZL</span>
+<span class="swatch" data-color="#8c6bb1">KWT</span>
+<span class="swatch" data-color="#e7cb94">SAU</span>
+<span class="swatch" data-color="#8ca252">PRT</span>
+<span class="swatch" data-color="#637939">BRA</span>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const swatches = document.querySelectorAll(".swatch");
+        swatches.forEach((swatch) => {
+          const color = swatch.getAttribute("data-color");
+          swatch.style.setProperty("--color", color);
+        });
+      });
+    </script>
+</body>
+</html>

@@ -1,9 +1,5 @@
 function _1(md){return(
-md`<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Sankey diagram</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
-
-# Sankey diagram
-
-This [Sankey diagram](https://github.com/d3/d3-sankey) visualizes the flow of energy: *supplies* are on the left, and *demands* are on the right. Links show how varying amounts of energy are converted or transmitted before being consumed or lost. Data: [Department of Energy & Climate Change](http://www.decc.gov.uk/en/content/cms/tackling/2050/calculator_on/calculator_on.aspx) via [Tom Counsell](https://tamc.github.io/Sankey/)`
+md``
 )}
 
 function _linkColor(Inputs,URLSearchParams,html){return(
