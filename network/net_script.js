@@ -1,21 +1,24 @@
 async function main() {
   const data = await d3.csv("net.csv", d3.autoType);
-  const width = window.parent.innerWidth;
-  const height = window.parent.innerHeight;
+  const width = window.parent.innerWidth * 0.8;
+  console.log(width)
+  const height = (window.parent.innerHeight - 100) * 0.95;
+  console.log(height)
 
+//  const svg = d3.select("#chart")
+//    .attr("viewBox", [-width / 2, -height / 2, width, height]);
 
-  const svg = d3.select("#chart")
-    .attr("viewBox", [-width / 2, -height / 2, width, height]);
+  const svg = d3.select("body").append("svg").attr("width",width).attr("height",height).attr("viewBox", [-width / 2, -height / 2, width, height]);;
 
-  initChartStyle(svg);
+  initChartStyle(svg, width, height);
   const {nodes, links, types} = processData(data);
   renderGraph(svg, nodes, links, types, width, height);
 }
 
-function initChartStyle(svg) {
-  svg.attr("width", "100%")
-    .attr("height", "100%")
-    .attr("style", "max-width: 100%; height: auto; font: 12px sans-serif;");
+function initChartStyle(svg, width, height) {
+  svg.attr("width", width)
+    .attr("height", height)
+    .attr("style", "font: 12px sans-serif; display: block; position:relative; z-index: 1; ");
 }
 
 function processData(data) {
@@ -47,8 +50,8 @@ function renderGraph(svg, nodes, links, types, width, height) {
 
 function initSimulation(nodes, links, width, height) {
   return d3.forceSimulation(nodes)
-    .force("link", d3.forceLink(links).distance(100).id(d => d.id))
-    .force("charge", d3.forceManyBody().strength(-20))
+    .force("link", d3.forceLink(links).distance(70).id(d => d.id))
+    .force("charge", d3.forceManyBody().strength(-14))
     .force("x", d3.forceX().x(0))
     .force("y", d3.forceY().y(0))
 	.force("boundary", boundaryForce(-width / 2 + 40, -height / 2 + 40, width / 2 - 40, height / 2 - 40, 100)); // 添加边界斥力
@@ -57,7 +60,7 @@ function initSimulation(nodes, links, width, height) {
 
 function boundaryForce(x1, y1, x2, y2, sourceBoundaryMargin) {
   function force(d) {
-    let margin = isSource(d.id) ? sourceBoundaryMargin : 40; // 源节点边界间距
+    let margin = isSource(d.id) ? sourceBoundaryMargin : 60; // 源节点边界间距
     d.x = Math.max(x1 + margin, Math.min(x2 - margin, d.x));
     d.y = Math.max(y1 + margin, Math.min(y2 - margin, d.y));
   }
@@ -77,7 +80,7 @@ function renderLinks(svg, links, types) {
     .data(links)
     .join("path")
     .attr("stroke", d => countryColor(d.type))
-    .attr("stroke-width", d => Math.sqrt(d.score));
+    .attr("stroke-width", d => Math.sqrt(d.score * 0.7));
 }
 
 function renderNodes(svg, nodes, simulation) {
@@ -140,7 +143,7 @@ function dandelionShape(score) {
   const n = Math.floor(Math.random() * (15 - 5 + 1)) + 5;
   const angle = Math.PI * 2 / n;
 //  const radius = Math.floor(Math.random() * (5 - 2 + 1)) + 2;
-  const radius = Math.floor(score / 1.5) + 3;
+  const radius = Math.floor(score * 0.8 / 1.5) + 3;
 
   return "M0,0" + 
     Array.from({ length: n }).map((d, i) => {
@@ -178,7 +181,7 @@ const hoverLabel = d3.select(this)
 .attr("y", "0.31em")
 .style("display", "block")
 .attr("fill", randomColor)
-.attr("font-size", "25px")
+.attr("font-size", "17.5px")
 .attr("stroke", "white")
 .attr("stroke-width", 0.8)
 .text(d => d.id);
