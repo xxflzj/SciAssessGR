@@ -2,10 +2,11 @@
 const svg = d3.select('#mainsvg');
 const width = +svg.attr('width');
 const height = +svg.attr('height');
-const margin = {top:25, right:10, bottom:60, left:30};
+const margin = {top:20, right:0, bottom:170, left:100};
 const innerWidth = width - margin.left - margin.right;
 const innerHeight = height - margin.top - margin.bottom;
 let chartData;
+
 
 const xScale = d3.scaleBand()
     .range([0, innerWidth])
@@ -78,6 +79,16 @@ function prepareData(order) {
     }
     drawChart();
 }
+
+const zoom = d3.zoom()
+    .scaleExtent([1, 10]) 
+    .on("zoom", zoomed);
+
+svg.call(zoom);
+
+function zoomed ({transform}) {
+    svg.attr("transform", transform);
+    }
 
 // 添加下拉选择框的事件监听器：
 const selectSort = document.getElementById('selectSort');
